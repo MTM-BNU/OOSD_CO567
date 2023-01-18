@@ -90,5 +90,8 @@ void show :: selectShow(string &showName, string &showDate)
 // Customer selects 1pm/7pm showing
 
 string show :: selectTime()
+{
+
+}
 
 #endif //OOSD_CO567_SHOW_H

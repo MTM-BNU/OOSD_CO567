@@ -81,7 +81,7 @@ int main() {
 
     SEAT.initialiseFloorPlan();
     d = SEAT.getNumSeats();
-    e = SEAT.getSeatSelection();
+    //e = SEAT.getSeatSelection();
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Deals with discounts, payment and ticket generation

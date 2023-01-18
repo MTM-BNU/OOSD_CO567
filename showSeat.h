@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <string>
 
-using namespace std;
+//using namespace std;
 
 class showSeat
 {
@@ -18,7 +18,7 @@ class showSeat
         ~showSeat();
         void initialiseFloorPlan();
         int getNumSeats();
-        double getSeatSelection();
+        //double getSeatSelection();
 
     private:
         void displayFloorPlan(int r, int c);

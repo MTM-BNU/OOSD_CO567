@@ -10,7 +10,7 @@
 #include <string>
 //#include <Windows.h>
 
-using namespace std;
+//using namespace std;
 
 class customer
 {
@@ -81,5 +81,8 @@ void customer :: getLogin()
 // Customer enters profile information
 
 void customer :: getProfileInfo(string &fName, string &sName, string &address)
+{
+
+}
 
 #endif //OOSD_CO567_CUSTOMER_H
