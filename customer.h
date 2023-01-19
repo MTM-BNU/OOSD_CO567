@@ -1,5 +1,6 @@
 //
 // Created by Tomás Pinto on 04/01/2023.
+//Updated by Milena Michalska on 19/01/23
 //
 
 #ifndef OOSD_CO567_CUSTOMER_H
@@ -82,6 +83,37 @@ void customer :: getLogin()
 
 void customer :: getProfileInfo(string &fName, string &sName, string &address)
 {
+    //first name
+    cout << "Enter Your Name: ";
+    getline(cin, fName);
+
+    while(fName.length() > 15)
+    {
+        cout << "Your First name should be no more than 15 characters long." << endl;
+        cout << "Please re-enter your First Name: ";
+        getline(cin, fName);
+    }
+//surname
+    cout << "Enter Your Surname: ";
+    getline(cin, sName);
+
+    while(sName.length() > 15)
+    {
+        cout << "Your  Surname should be no more than 15 characters long." << endl;
+        cout << "Please re-enter your Last Name: ";
+        getline(cin, sName);
+    }
+
+    //email address
+    cout << "Enter Your Email Address: ";
+    getline(cin, address);
+
+    while(address.length() > 30)
+    {
+        cout << "Your Email Address should be no more than 30 characters long." << endl;
+        cout << "Please re-enter your Email Address: ";
+        getline(cin, address);
+    }
 
 }
 
