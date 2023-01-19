@@ -81,8 +81,17 @@ void customer :: getLogin()
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Customer enters profile information
 
+
+
+
 void customer :: getProfileInfo(string &fName, string &sName, string &address)
 {
+    char terminator;
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER PROFILE INFORMATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
+    cout << "\n As you are a new customer, you must provide your profile information" << endl;
+
+
+
     //first name
     cout << "Enter Your Name: ";
     getline(cin, fName);
@@ -115,6 +124,7 @@ void customer :: getProfileInfo(string &fName, string &sName, string &address)
         getline(cin, address);
     }
 
+    cin.get(terminator);
 }
 
 #endif //OOSD_CO567_CUSTOMER_H
