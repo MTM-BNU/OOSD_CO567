@@ -57,7 +57,6 @@ void ticket :: setPrice(double price)
 void ticket :: printTicket(string showName, string showDate, string showTime, int numSeats,
                            string fName,string sName, string address)
 {
-    system("CLS");
     cout << "\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ YOUR TICKETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
     cout << "=================================================================================" << endl;
     cout << "==================== The Bucks Centre for the Performing Arts ===================" << endl;

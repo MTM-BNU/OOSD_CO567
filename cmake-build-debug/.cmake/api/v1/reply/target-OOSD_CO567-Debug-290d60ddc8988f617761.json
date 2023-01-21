@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "OOSD_CO567.exe"
-		},
-		{
-			"path" : "OOSD_CO567.pdb"
+			"path" : "OOSD_CO567"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,10 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics"
+				},
+				{
+					"fragment" : "-std=gnu++17"
 				}
 			],
 			"language" : "CXX",
@@ -68,16 +68,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "OOSD_CO567",
-	"nameOnDisk" : "OOSD_CO567.exe",
+	"nameOnDisk" : "OOSD_CO567",
 	"paths" : 
 	{
 		"build" : ".",

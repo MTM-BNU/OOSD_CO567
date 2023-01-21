@@ -53,9 +53,9 @@ void customer :: getLogin()
     string username; // in the real system, a set of usernames/passwords would be saved in a database file
     string password; // in this prototype, any username/password will be accpeted
 
-    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOG IN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
-    cout << "\n Welcome to the Bucks Centre for the Performing Arts ticket purchasing system!" << endl;
-    cout << "                                 Please log in." << endl;
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOG IN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << " Welcome to the Bucks Centre for the Performing Arts ticket purchasing system!" << endl;
+    cout << " Please log in.\n" << endl;
 
     cout << "Enter username: ";
     getline(cin, username);
@@ -83,6 +83,7 @@ void customer :: getLogin()
 
 void customer :: getProfileInfo(string &fName, string &sName, string &address)
 {
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PROFILE INFORMATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
     //first name
     cout << "Enter Your Name: ";
     getline(cin, fName);

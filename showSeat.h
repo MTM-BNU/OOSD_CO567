@@ -18,10 +18,12 @@ class showSeat
         ~showSeat();
         void initialiseFloorPlan();
         int getNumSeats();
-        //double getSeatSelection();
+        double getSeatSelection();
 
-    private:
-        void displayFloorPlan(int r, int c);
+    double getSeatSelection(int i);
+
+private:
+        void displayFloorPlan();
         void calculatePrice(double &price); //encapsulation - functions only accessed by this class, and no other part of the program
 
     protected:
@@ -74,20 +76,65 @@ void showSeat :: initialiseFloorPlan()
 // Gets the user's no. of seats
 int showSeat :: getNumSeats()
 {
-    system("CLS");
 
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SELECT SEATS INTERACTIVELY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
 
+    displayFloorPlan();
     do {
         cin.clear();
         cin.ignore(100, '\n');
         cout << "How many tickets would you like to purchase (Max. 8)?: "; // prompts customer to enter no. of tickets
         cin >> numSeats;
         cout << endl;
-    } while (numSeats != 1 && numSeats != 2 && numSeats != 3 && numSeats != 4 && numSeats != 5
-             && numSeats != 6 && numSeats != 7 && numSeats != 8);
+    } while (!(numSeats >=1 && numSeats <=8));
 
     return numSeats;
+}
+
+void showSeat::displayFloorPlan()
+{
+    // initialises row letters
+    char a = 'A';
+
+    // Prints the rows
+    for(int i = 0; i < 7; i++)
+    {
+        // Prints the column numbers
+        if(i == 0)
+        {
+            cout << "   ";
+            for(int j = 1; j < 7; j++)
+            {
+                cout << " ~~" << j << "~~ ";
+            }
+            cout << endl;
+        }
+
+        // Prints the columns
+        for(int j = 0; j < 6; j++)
+        {
+            // Prints the row letters
+            if(j == 0)
+            {
+                cout << char(a) << "~~";
+                // increases letter
+                a++;
+            }
+            cout << "   " << floorPlan[i][j] << "   ";
+        }
+        cout << "\n" << endl;
+    }
+}
+
+double showSeat::getSeatSelection(int numSeats) {
+
+    // Here it should iterate numSeats times and ask what row letter and colum number
+    // of the seat user wants to hold. Display the floor map again with the hold seats.
+    // Display an error if the seat is already taken or does not exist (e.g: seat A199)
+    // Print a message with the seat sleected.
+
+    //leave this here for now
+    return 0;
 }
 
 #endif //OOSD_CO567_SHOWSEAT_H
