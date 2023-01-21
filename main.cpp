@@ -39,8 +39,6 @@ int main() {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Displays Main Menu, and allows customer to choose option
 
-    system("CLS");
-
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MAIN MENU ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
     cout << " 1. Buy tickets for upcoming shows" << endl;
     cout << " 2. Log out\n" << endl;
@@ -64,15 +62,16 @@ int main() {
     do
     {
         SHOW.selectShow(a,b);
-        c = SHOW.selectTime();
+        SHOW.selectTime();
 
         do
         {
+            cin.clear();
+            cin.ignore(100, '\n');
             cout << "\nAre you happy with your choice (Y = Yes, N = No)?: ";
             cin.get(ch);
         }
         while (ch != 'Y' && ch != 'y' && ch != 'N' && ch != 'n');
-        cin.get(terminator); // clears buffer
     }
     while (ch == 'N' || ch == 'n' );
 
@@ -81,7 +80,7 @@ int main() {
 
     SEAT.initialiseFloorPlan();
     d = SEAT.getNumSeats();
-    //e = SEAT.getSeatSelection();
+    e = SEAT.getSeatSelection(d);
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Deals with discounts, payment and ticket generation
