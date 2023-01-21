@@ -50,7 +50,7 @@ void show :: selectShow(string &showName, string &showDate)
     char ch;
     char terminator;
 
-    system("CLS");
+    //system("CLS");
 
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SELECT AN UPCOMING SHOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
     cout << "1. Star Wars: The Musical (20/05/2013)" << endl;
@@ -59,7 +59,7 @@ void show :: selectShow(string &showName, string &showDate)
 
     cin.clear();
     cin.ignore(100, '\n'); // Ensures buffer is completely clear (if, say, the user inputs a long string)
-    cout << "Plaese select a show number: ";
+    cout << "Please select a show number: ";
     cin.get(ch);
 
     while(ch != '1' && ch != '2' && ch != '3')
@@ -91,7 +91,36 @@ void show :: selectShow(string &showName, string &showDate)
 
 string show :: selectTime()
 {
+    char ch;
+    char terminator;
 
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SELECT PERFORMANCE TIME ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
+    cout << "1. Matinee Performance (1pm)" << endl;
+    cout << "2. Evening Performance (7pm)" << endl;
+    cout << "Please select a performance choice number: ";
+    cin.get(ch);
+
+    while(ch != '1' && ch != '2')
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Please select a valid performance choice number: ";
+        cin.get(ch);
+    }
+
+    switch(ch)
+    {
+        case '1' : showTime = "1pm";
+            break;
+        case '2' : showTime = "7pm";
+            break;
+    }
+
+    this -> showTime = showTime;
+
+    cout << "You have chosen " + showName + " at " + showTime + " (" + showDate + ")";
+
+    cin.get(terminator);
 }
 
 #endif //OOSD_CO567_SHOW_H
