@@ -17,6 +17,7 @@ class showSeat
         showSeat();
         ~showSeat();
         void initialiseFloorPlan();
+        void update( int a, char b);
         int getNumSeats();
         double getSeatSelection();
 
@@ -79,12 +80,14 @@ int showSeat :: getNumSeats()
 
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SELECT SEATS INTERACTIVELY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
 
+    cout << "\n How many tickets would you like to purchase (Max. 8)?:   " ; // prompts customer to enter no. of tickets
+    cin >> numSeats;
+    cout << "\n" << endl;
     displayFloorPlan();
     do {
         cin.clear();
         cin.ignore(100, '\n');
-        cout << "How many tickets would you like to purchase (Max. 8)?: "; // prompts customer to enter no. of tickets
-        cin >> numSeats;
+
         cout << endl;
     } while (!(numSeats >=1 && numSeats <=8));
 
@@ -122,19 +125,59 @@ void showSeat::displayFloorPlan()
             }
             cout << "   " << floorPlan[i][j] << "   ";
         }
+
         cout << "\n" << endl;
+
     }
+    cout<<"              ~~~  Key  ~~~";
+    cout<<"\n           A - Available seats";
+    cout<<"\n           H - Held  seats    "<<endl;
 }
 
 double showSeat::getSeatSelection(int numSeats) {
+    int i;
+    int a;
+    char b;
+    floorPlan[6][7];
 
-    // Here it should iterate numSeats times and ask what row letter and colum number
+    for (i = 0; i < numSeats; i++) {
+
+
+
+        cin.clear();
+        /* cin.ignore(100, '\n');*/
+        cout << " \n Please Enter a column number (1-6) for seat  " << i + 1;
+        cout << ":  ";
+        cin >> a;
+
+
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "\n Please Enter a  row  number  (A-G) for seat  " << i + 1;
+        cout << ":  ";
+        cin >> b;
+
+
+
+    }
+    update(a,b);
+
+
+
+
+    // Here it should iterate numSeats times and ask what row letter and colum number DONE
     // of the seat user wants to hold. Display the floor map again with the hold seats.
     // Display an error if the seat is already taken or does not exist (e.g: seat A199)
     // Print a message with the seat sleected.
 
     //leave this here for now
-    return 0;
+
+}
+void showSeat::update( int a, char b) {
+    char floorPlan [6][7];
+    floorPlan[a][b] = 'H';
+    displayFloorPlan();
+
 }
 
 #endif //OOSD_CO567_SHOWSEAT_H
