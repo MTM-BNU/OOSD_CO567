@@ -48,7 +48,7 @@ int main() {
     {
         cin.clear();
         cin.ignore(100, '\n'); // Ensures buffer is completely clear (if, say, the user inputs a long string)
-        cout << "Please select a valid menu choice number";
+        cout << "Please select a valid menu choice number: ";
         cin.get(ch);
     }
     if (ch== '2')

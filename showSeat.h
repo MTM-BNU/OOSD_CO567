@@ -17,7 +17,7 @@ class showSeat
         showSeat();
         ~showSeat();
         void initialiseFloorPlan();
-        void update( int a, char b);
+
         int getNumSeats();
         double getSeatSelection();
 
@@ -25,13 +25,15 @@ class showSeat
 
 private:
         void displayFloorPlan();
+
         void calculatePrice(double &price); //encapsulation - functions only accessed by this class, and no other part of the program
 
     protected:
-        char floorPlan[7][6];
+    char floorPlan[7][6];
         int numSeats;
         int rNum; // used to calculate price
         double price;
+
 };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,12 +66,19 @@ showSeat :: ~showSeat()
 
 void showSeat :: initialiseFloorPlan()
 {
+    int r;
+    int c;
+
     for(int r = 0; r < 7; r++) // prepares rows
     {
+
         for(int c = 0; c < 6; c++) // prepares columns
         {
-            floorPlan[r][c] = 'A'; // populates array with 'A' character (Available)
+
+            floorPlan[r][c] = 'A';// populates array with 'A' character (Available)
+
         }
+
     }
 }
 
@@ -138,7 +147,7 @@ double showSeat::getSeatSelection(int numSeats) {
     int i;
     int a;
     char b;
-    floorPlan[6][7];
+    floorPlan[7][6];
 
     for (i = 0; i < numSeats; i++) {
 
@@ -149,21 +158,29 @@ double showSeat::getSeatSelection(int numSeats) {
         cout << " \n Please Enter a column number (1-6) for seat  " << i + 1;
         cout << ":  ";
         cin >> a;
-
-
         cin.clear();
         cin.ignore(100, '\n');
+        floorPlan[a-2][6]='H';
+
         cout << "\n Please Enter a  row  number  (A-G) for seat  " << i + 1;
         cout << ":  ";
         cin >> b;
+        cout << "\n" << endl;
+        cin.clear();
+        cin.ignore(100, '\n');
+        floorPlan[7][b-2]='H';
+
+
+
 
 
 
     }
-    update(a,b);
 
+   /* floorPlan[a][6]='H';
+    floorPlan[7][b]='H';*/
 
-
+    displayFloorPlan();
 
     // Here it should iterate numSeats times and ask what row letter and colum number DONE
     // of the seat user wants to hold. Display the floor map again with the hold seats.
@@ -172,12 +189,18 @@ double showSeat::getSeatSelection(int numSeats) {
 
     //leave this here for now
 
-}
-void showSeat::update( int a, char b) {
-    char floorPlan [6][7];
-    floorPlan[a][b] = 'H';
-    displayFloorPlan();
 
-}
+/* void showSeat::update( int a, char b) {
+    char floorPlan [a][b];
+    initialiseFloorPlan();
+    floorPlan[a][b] = 'H';*/
+
+
+
+
+
+    }
+
+
 
 #endif //OOSD_CO567_SHOWSEAT_H
