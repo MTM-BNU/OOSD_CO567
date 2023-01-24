@@ -19,13 +19,15 @@ class customer
             customer();
             ~customer();
             void getLogin();
-            void getProfileInfo(string &fName, string &sName, string &address);
+            void getProfileInfo(string &fName, string &sName, string &address, int &ctype);
             void getPaymentInfo();
 
     protected:
             string fName;
             string sName;
             string address;
+            int ctype;
+            bool isDigits(string card);
 };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,15 +82,13 @@ void customer :: getLogin()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Customer enters profile information
-
-
-
-
-void customer :: getProfileInfo(string &fName, string &sName, string &address)
+void customer :: getProfileInfo(string &fName, string &sName, string &address, int &ctype)
 {
     char terminator;
+    int ch;
+
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER PROFILE INFORMATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
-    cout << "\n As you are a new customer, you must provide your profile information" << endl;
+    cout << " As you are a new customer, you must provide your profile information" << endl;
 
 
 
@@ -124,7 +124,103 @@ void customer :: getProfileInfo(string &fName, string &sName, string &address)
         getline(cin, address);
     }
 
-    cin.get(terminator);
+    //customer category: student, adult or concession
+    cout << "\nTicket categories:" << endl;
+    cout << "1. Adult" << endl;
+    cout << "2. Student" << endl;
+    cout << "3. Concession (Senior +65y, child up to 18y, armed forces)" << endl;
+    cout << "\nSelect the category for which you want to buy tickets for: ";
+    cin >> ctype;
+    cin.clear();
+    cin.ignore(100, '\n');
+
+    while(ctype > 3 || ctype <= 0)
+    {
+        cout << "Please choose a valid option: ";
+        cin >> ctype;
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    this->fName = fName;
+    this->sName = sName;
+    this->address = address;
+    this->ctype = ctype;
+}
+
+void customer::getPaymentInfo()
+{
+    string card;
+    cout << "\n~~~~~ PAYMENT ~~~~\n" << endl;
+    cout << " Please type credit card number: ";
+    cin >> card;
+    cin.clear();
+    cin.ignore(100, '\n');
+
+    while(card.size() != 16 || !isDigits(card))
+    {
+        cout << " Please input a valid credit card number with 16 digits: ";
+        cin >> card;
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    int month;
+    cout << " Please type credit card expiry month (1-12): ";
+    cin >> month;
+    cin.clear();
+    cin.ignore(100, '\n');
+
+    while(!(month >= 1 && month <= 12))
+    {
+        cout << " Please input a valid month between 1 and 12: ";
+        cin >> month;
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    int year;
+    cout << " Please type credit card expiry year greater than 2022: ";
+    cin >> year;
+    cin.clear();
+    cin.ignore(100, '\n');
+
+    while(year <= 2022)
+    {
+        cout << " Please input a valid year (2023-2999): ";
+        cin >> year;
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    string code;
+    cout << " Please type credit card security code: ";
+    cin >> code;
+    cin.clear();
+    cin.ignore(100, '\n');
+
+    while(code.size() != 3 || !isDigits(code))
+    {
+        cout << " Please input a valid expiry date with 3 digits: ";
+        cin >> code;
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    cout << "Successful Payment!" << endl;
+}
+
+// Validate credit card number and security code
+bool customer::isDigits(string card)
+{
+    for(char c : card)
+    {
+        if(!(c >= '0' && c <= '9'))
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 #endif //OOSD_CO567_CUSTOMER_H

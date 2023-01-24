@@ -17,7 +17,7 @@ class show
             show();
             ~show();
             void selectShow(string &showName, string &showDate);
-            void selectTime();
+            void selectTime(string &showTime);
 
     protected:
             string showName;
@@ -70,11 +70,11 @@ void show :: selectShow(string &showName, string &showDate)
 
     switch(ch)
     {
-        case '1' : showName = "Star Wars: The Musical", showDate = "20/05/2013";
+        case '1' : showName = "Star Wars: The Musical", showDate = "20/05/2023";
             break;
-        case '2' : showName = "Les Miserables", showDate = "21/05/2013";
+        case '2' : showName = "Les Miserables", showDate = "21/05/2023";
             break;
-        case '3' : showName = "The Phantom of the Opera", showDate = "22/05/2013";
+        case '3' : showName = "The Phantom of the Opera", showDate = "22/05/2023";
             break;
     }
 
@@ -87,7 +87,7 @@ void show :: selectShow(string &showName, string &showDate)
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Customer selects 1pm/7pm showing
 
-void show :: selectTime()
+void show :: selectTime(string &showTime)
 {
     char ch;
     char terminator;

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -16,10 +17,9 @@ class ticket
     public:
         ticket();
         ~ticket();
-        void setPrice(double price);
-        void printTicket(string showName, string showDate, string showTime, int numSeats, string fName,
+        void setPrice(map<string,double> mPrice);
+        void printTicket(string showName, string showDate, string showTime, map<string,double> selectedSeats, string fName,
                          string sName, string address);
-        virtual double cost() = 0; // virtual function used by derived classes
 
     protected:
         double totalCost;
@@ -41,20 +41,25 @@ ticket :: ~ticket()
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Calculates discount cost from total price
+// Set Price in ticket
 
-void ticket :: setPrice(double price)
+void ticket :: setPrice(map<string,double> mPrice)
 {
-    totalCost = price;
-    cout << "\nThe total price of your tickets (including any applicable discount) is "
-         << (char)156 << this -> cost() << ".\n" << endl;
-    system("PAUSE");
+    double cost;
+
+    for(const auto &[key, value] : mPrice)
+    {
+        cost += mPrice[key];
+    }
+
+    totalCost= cost;
+    cout << "\nThe total price of your tickets (including any applicable discount) is £" << totalCost << ".\n" << endl;
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Prints Ticket using data from derived classes
 
-void ticket :: printTicket(string showName, string showDate, string showTime, int numSeats,
+void ticket :: printTicket(string showName, string showDate, string showTime, map<string,double> selectedSeats,
                            string fName,string sName, string address)
 {
     cout << "\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ YOUR TICKETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
@@ -65,10 +70,17 @@ void ticket :: printTicket(string showName, string showDate, string showTime, in
     cout << "Date: " << showDate << endl;
     cout << "Time: " << showTime << endl;
     cout << "=================================================================================" << endl;
-    cout << "Number of seats: " << numSeats << endl;
-    cout << "Total cost: " << (char)156 << this -> cost() << endl;
-    cout << "Ticket Purchaser: " << fName << endl;
-    cout << "Postal Address: " << address << endl;
+    cout << "Number of seats: " << selectedSeats.size() << "\n" << endl;
+    int i = 1;
+    for(const auto &[key, value] : selectedSeats)
+    {
+        cout << "Seat #" << i << ": "<< key << endl;
+        cout << "Price: £" << selectedSeats[key] << "\n" << endl;
+        i++;
+    }
+    cout << "Total cost: £" << totalCost << endl;
+    cout << "Ticket Purchaser: " << fName << " " << sName << endl;
+    cout << "Email Address: " << address << endl;
     cout << "=================================================================================" << endl;
     cout << "=================================================================================" << endl;
 }
