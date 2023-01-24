@@ -23,7 +23,7 @@ class showSeat
         map<int,string> getSeatSelection(int numSeats);
         void reserveSeats(map<int,string> m);
 
-    void reinitialiseFloorPlan();
+        void reinitialiseFloorPlan();
 
 private:
         void displayFloorPlan();
@@ -174,6 +174,7 @@ map<int,string> showSeat::getSeatSelection(int numSeats)
             cin.ignore(100, '\n');
             cout << "  Please select a valid letter: ";
             cin >> chR;
+            chR = toupper(chR);
         }
 
         cin.clear();

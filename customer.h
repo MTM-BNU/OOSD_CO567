@@ -84,8 +84,6 @@ void customer :: getLogin()
 // Customer enters profile information
 void customer :: getProfileInfo(string &fName, string &sName, string &address, int &ctype)
 {
-    char terminator;
-    int ch;
 
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER PROFILE INFORMATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
     cout << " As you are a new customer, you must provide your profile information" << endl;

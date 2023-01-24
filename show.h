@@ -90,7 +90,6 @@ void show :: selectShow(string &showName, string &showDate)
 void show :: selectTime(string &showTime)
 {
     char ch;
-    char terminator;
 
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SELECT PERFORMANCE TIME ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << endl;
     cout << "1. Matinee Performance (1pm)" << endl;
